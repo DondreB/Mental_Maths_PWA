@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Practice - Learn & Play</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="description" content="Interactive math practice for young learners">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 text-white p-2 rounded-full">
+                        <i class="fas fa-calculator text-xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Mental Maths</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="installBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium hidden">
+                        <i class="fas fa-download mr-2"></i>Install App
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Welcome Section -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Let's Practice Math! 🧮
+            </h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Fun and interactive math practice for young learners
+            </p>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="bg-white rounded-xl shadow-xl mb-8 overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4">
+                <h3 class="text-2xl font-bold">Choose Your Challenge</h3>
+            </div>
+            
+            <div class="p-6 space-y-6">
+                <!-- Difficulty Level -->
+                <div>
+                    <label class="block text-lg font-semibold text-gray-700 mb-4">Difficulty Level:</label>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="difficulty-card bg-green-50 border-2 border-green-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-all duration-200" data-level="easy">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">🟢</div>
+                                <h4 class="text-xl font-bold text-green-700">Easy</h4>
+                                <p class="text-sm text-green-600">Numbers 1-10</p>
+                                <p class="text-xs text-gray-500 mt-1">Perfect for beginners</p>
+                            </div>
+                        </div>
+                        
+                        <div class="difficulty-card bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-all duration-200" data-level="medium">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">🟡</div>
+                                <h4 class="text-xl font-bold text-yellow-700">Medium</h4>
+                                <p class="text-sm text-yellow-600">Numbers 1-99</p>
+                                <p class="text-xs text-gray-500 mt-1">Building confidence</p>
+                            </div>
+                        </div>
+                        
+                        <div class="difficulty-card bg-red-50 border-2 border-red-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-all duration-200" data-level="hard">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">🔴</div>
+                                <h4 class="text-xl font-bold text-red-700">Hard</h4>
+                                <p class="text-sm text-red-600">Numbers 0-999</p>
+                                <p class="text-xs text-gray-500 mt-1">Challenge yourself!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Math Concepts -->
+                <div>
+                    <label class="block text-lg font-semibold text-gray-700 mb-4">Choose What to Practice:</label>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="concept-card bg-blue-50 border-2 border-blue-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-all duration-200" data-concept="numbers">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">🔢</div>
+                                <h4 class="text-lg font-bold text-blue-700">Numbers & Operations</h4>
+                                <p class="text-sm text-blue-600">Addition, subtraction, multiplication, division</p>
+                            </div>
+                        </div>
+                        
+                        <div class="concept-card bg-purple-50 border-2 border-purple-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-all duration-200" data-concept="patterns">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">🔄</div>
+                                <h4 class="text-lg font-bold text-purple-700">Patterns</h4>
+                                <p class="text-sm text-purple-600">Number sequences and patterns</p>
+                            </div>
+                        </div>
+                        
+                        <div class="concept-card bg-green-50 border-2 border-green-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-all duration-200" data-concept="dataHandling">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">📊</div>
+                                <h4 class="text-lg font-bold text-green-700">Counting</h4>
+                                <p class="text-sm text-green-600">Count objects and groups</p>
+                            </div>
+                        </div>
+                        
+                        <div class="concept-card bg-orange-50 border-2 border-orange-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-all duration-200" data-concept="measurement">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">📏</div>
+                                <h4 class="text-lg font-bold text-orange-700">Measurement</h4>
+                                <p class="text-sm text-orange-600">Size, length, and comparison</p>
+                            </div>
+                        </div>
+                        
+                        <div class="concept-card bg-pink-50 border-2 border-pink-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-all duration-200" data-concept="geometry">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">🔺</div>
+                                <h4 class="text-lg font-bold text-pink-700">Shapes</h4>
+                                <p class="text-sm text-pink-600">Recognize and count shapes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col md:flex-row gap-4 pt-6">
+                    <button id="startInteractiveBtn" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-lg text-lg shadow-lg transform transition duration-200 ease-in-out hover:scale-105">
+                        <i class="fas fa-play mr-2"></i>
+                        Start Interactive Practice
+                    </button>
+                    
+                    <button id="generatePdfBtn" class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-lg text-lg shadow-lg transform transition duration-200 ease-in-out hover:scale-105">
+                        <i class="fas fa-file-pdf mr-2"></i>
+                        Generate PDF Worksheet
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Interactive Practice Modal -->
+    <div id="practiceModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+                <div class="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-t-xl">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold">Math Practice Session</h3>
+                        <button id="closeModal" class="text-white hover:text-gray-200 text-2xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-center mt-3">
+                        <div class="text-lg">
+                            <span>Question <span id="currentQuestion">1</span> of <span id="totalQuestions">25</span></span>
+                        </div>
+                        <div class="text-lg">
+                            <i class="fas fa-clock mr-1"></i>
+                            <span id="timer">00:00</span>
+                        </div>
+                        <div class="text-lg">
+                            <i class="fas fa-star mr-1"></i>
+                            Score: <span id="score">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div id="practiceContent" class="text-center">
+                        <!-- Practice content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Worksheet Container (hidden) -->
+    <div id="worksheetContainer" class="hidden">
+        <!-- PDF content will be generated here -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="worksheet-generator.js"></script>
+    <script src="interactive-practice.js"></script>
+</body>
+</html>
